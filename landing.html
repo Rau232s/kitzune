@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitzune Division | Tactical Esports & Data Science</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#080B10',   /* 60% Dominante */
+              card: '#0F1722',   /* 30% Secundario */
+              accent: '#00F0FF'  /* 10% Acento Cian */
+            }
+          },
+          fontFamily: {
+            heading: ['Orbitron', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="bg-brand-dark text-gray-100 font-body antialiased relative overflow-x-hidden">
+
+  <canvas id="cyber-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/90 border-b border-brand-accent/20">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="font-heading font-black text-xl tracking-wider text-white">
+          KITZUNE <span class="text-brand-accent">DIVISION</span>
+        </span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-300">
+        <a href="#about" class="hover:text-brand-accent transition-colors">Sobre KZD</a>
+        <a href="#rosters" class="hover:text-brand-accent transition-colors">Divisiones</a>
+        <a href="#metrics" class="hover:text-brand-accent transition-colors">Métricas</a>
+        <a href="#sponsors" class="hover:text-brand-accent transition-colors">Sponsors</a>
+      </nav>
+      <a href="https://www.instagram.com/kz_division/" target="_blank" class="px-5 py-2.5 rounded-lg text-sm font-bold bg-brand-accent text-black hover:bg-brand-accent/80 transition-all shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+        @kz_division
+      </a>
+    </div>
+  </header>
+
+  <section id="about" class="relative z-10 min-h-[85vh] flex items-center justify-center px-6 text-center overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-25">
+      <video autoplay loop muted playsinline class="w-full h-full object-cover">
+        <source src="assets/logo.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      <span class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-brand-accent/40 bg-brand-accent/10 text-brand-accent inline-block mb-6">
+        Tier 3 Esports Organization
+      </span>
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight uppercase text-white">
+        LIDERANDO CON <span class="text-brand-accent">CIENCIA Y RENDIMIENTO</span>
+      </h1>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+        Estructura competitiva multidisciplinaria respaldada por modelos matemáticos de rendimiento deportivo.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#sponsors" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold bg-brand-accent text-black hover:bg-brand-accent/80 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+          Ser Sponsor
+        </a>
+        <a href="#rosters" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold border border-brand-accent/30 bg-brand-card text-white hover:border-brand-accent transition-all">
+          Ver Divisiones
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="rosters" class="relative z-10 py-16 bg-brand-card/40 border-y border-brand-accent/10">
+    <div class="max-w-7xl mx-auto px-6 mb-8 flex flex-col md:flex-row justify-between items-end gap-4">
+      <div>
+        <span class="text-brand-accent text-xs font-bold uppercase tracking-widest">Rosters Activos</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-extrabold text-white">DIVISIONES COMPETITIVAS</h2>
+      </div>
+      <p class="text-gray-400 text-sm max-w-md">Desplaza horizontalmente para explorar las escuadras oficiales.</p>
+    </div>
+
+    <div class="horizontal-scroll-container flex gap-6 overflow-x-auto px-6 py-4 max-w-7xl mx-auto">
+      
+      <div class="min-w-[300px] md:min-w-[350px] p-8 rounded-2xl bg-brand-card border border-brand-accent/30 hover:border-brand-accent flex-shrink-0 transition-all card-glow">
+        <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Valorant Division</div>
+        <h3 class="font-heading text-2xl font-bold mb-6 text-white">VALORANT (V/)</h3>
+        <ul class="space-y-4">
+          <li class="bg-brand-dark p-3 rounded-lg border border-brand-accent/20">
+            <span class="block text-xs text-brand-accent font-semibold">Roster Masculino</span>
+            <span class="font-bold text-lg text-white">KZD GOLD</span>
+          </li>
+          <li class="bg-brand-dark p-3 rounded-lg border border-brand-accent/20">
+            <span class="block text-xs text-brand-accent font-semibold">Roster GC</span>
+            <span class="font-bold text-lg text-white">KZD MOONVEIL</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="min-w-[300px] md:min-w-[350px] p-8 rounded-2xl bg-brand-card border border-brand-accent/30 hover:border-brand-accent flex-shrink-0 transition-all card-glow">
+        <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">LoL Division</div>
+        <h3 class="font-heading text-2xl font-bold mb-6 text-white">LEAGUE OF LEGENDS</h3>
+        <ul class="space-y-4">
+          <li class="bg-brand-dark p-3 rounded-lg border border-brand-accent/20">
+            <span class="block text-xs text-brand-accent font-semibold">Roster Mixto</span>
+            <span class="font-bold text-lg text-white">KZD EGO</span>
+          </li>
+          <li class="bg-brand-dark p-3 rounded-lg border border-brand-accent/20">
+            <span class="block text-xs text-brand-accent font-semibold">Roster Full Femenil</span>
+            <span class="font-bold text-lg text-white">KZD MOONVEIL</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="min-w-[300px] md:min-w-[350px] p-8 rounded-2xl bg-brand-card border border-brand-accent/30 hover:border-brand-accent flex-shrink-0 transition-all card-glow">
+        <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">CS:GO Division</div>
+        <h3 class="font-heading text-2xl font-bold mb-6 text-white">COUNTER-STRIKE</h3>
+        <ul class="space-y-4">
+          <li class="bg-brand-dark p-3 rounded-lg border border-brand-accent/20">
+            <span class="block text-xs text-brand-accent font-semibold">Roster Masculino</span>
+            <span class="font-bold text-lg text-white">KZD SERAFIM</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="min-w-[300px] md:min-w-[350px] p-8 rounded-2xl bg-brand-card border border-brand-accent/30 hover:border-brand-accent flex-shrink-0 transition-all card-glow">
+        <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Strategy Division</div>
+        <h3 class="font-heading text-2xl font-bold mb-6 text-white">TEAMFIGHT TACTICS</h3>
+        <ul class="space-y-4">
+          <li class="bg-brand-dark p-3 rounded-lg border border-brand-accent/20">
+            <span class="block text-xs text-brand-accent font-semibold">División Estratégica</span>
+            <span class="font-bold text-lg text-white">TFT / KZD DIVISION</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="metrics" class="relative z-10 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-extrabold text-white mb-4 uppercase">MODELO CIENTÍFICO DE ORGANIZACIÓN</h2>
+        <p class="text-gray-400 max-w-xl mx-auto">Métricas de salud interna y rendimiento desarrolladas por KZD.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="p-8 rounded-2xl bg-brand-card border border-brand-accent/20 card-glow">
+          <div class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-2">Bienestar Roster & Staff</div>
+          <h3 class="font-heading text-xl font-bold mb-4 text-white">Health Index (HI)</h3>
+          <div class="text-5xl font-extrabold text-brand-accent mb-4">0.67</div>
+          <p class="text-gray-400 text-sm">Monitoreo constante de motivación y cohesión de equipo.</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-brand-card border border-brand-accent/20 card-glow">
+          <div class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-2">Crecimiento Marca & Retorno</div>
+          <h3 class="font-heading text-xl font-bold mb-4 text-white">Growth Index (GI)</h3>
+          <div class="text-5xl font-extrabold text-brand-accent mb-4">0.73</div>
+          <p class="text-gray-400 text-sm">Rendimiento deportivo sostenido y alcance comercial con la comunidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sponsors" class="relative z-10 py-16 bg-brand-dark border-t border-brand-accent/20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+      <span class="text-brand-accent text-xs font-bold uppercase tracking-widest">Alianzas Estratégicas</span>
+      <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-white uppercase">SPONSORS OFICIALES</h2>
+    </div>
+
+    <div class="marquee-wrapper flex overflow-hidden whitespace-nowrap py-4">
+      <div class="marquee-content flex gap-12 items-center">
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">SPONSOR_01</span>
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">PARTNER_TECH</span>
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">ENERGY_DRINK</span>
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">GAMING_GEAR</span>
+      </div>
+      <div class="marquee-content flex gap-12 items-center" aria-hidden="true">
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">SPONSOR_01</span>
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">PARTNER_TECH</span>
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">ENERGY_DRINK</span>
+        <span class="text-2xl font-heading font-black text-gray-600 hover:text-brand-accent transition-colors">GAMING_GEAR</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="relative z-10 border-t border-brand-accent/20 bg-brand-card/80 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <span class="font-heading font-bold text-lg text-white">KITZUNE DIVISION</span>
+        <p class="text-gray-500 text-xs">© 2026 Kitzune Division. Todos los derechos reservados.</p>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="mailto:contacto@kitzunedivision.com" class="hover:text-brand-accent transition-colors">Contacto Corporativo</a>
+        <a href="https://www.instagram.com/kz_division/" target="_blank" class="hover:text-brand-accent transition-colors">Instagram @kz_division</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/canvas-bg.js"></script>
+  <script src="js/horizontal-scroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/* ==========================================================================
+   KITZUNE DIVISION - COMPONENTS & ANIMATION #8
+   ========================================================================== */
+
+/* 1. SECCIÓN DE MÉTRICAS (HUD DASHBOARD) */
+.metrics-section {
+    padding: 80px 5%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--white-dim);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.metric-card {
+    padding: 30px;
+    border-left: 4px solid var(--red-kurenai);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.metric-tag {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--red-kurenai);
+}
+
+.metric-value {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--white-neon);
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--red-kurenai);
+    box-shadow: 0 0 10px var(--red-glow);
+}
+
+/* ==========================================================================
+   2. DIVISIONES COMPETITIVAS (ROSTERS - ROTACIÓN AUTOMÁTICA & SHOWCASE)
+   ========================================================================== */
+
+.rosters-section {
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contenedor principal interactivo con JS */
+#roster-track,
+.horizontal-scroll-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 20px 10px;
+    white-space: nowrap;
+    cursor: grab;
+    user-select: none;
+    -ms-overflow-style: none;  /* IE / Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Ocultar barra de scroll */
+#roster-track::-webkit-scrollbar,
+.horizontal-scroll-track::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+#roster-track:active {
+    cursor: grabbing;
+}
+
+/* Tarjeta de Roster base con soporte Showcase */
+.roster-card {
+    position: relative;
+    min-width: 320px;
+    max-width: 350px;
+    height: 380px;
+    flex: 0 0 auto;
+    padding: 25px;
+    background: rgba(10, 10, 12, 0.9);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-top: 3px solid var(--red-kurenai, #DC2626);
+    border-radius: 6px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roster-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--red-kurenai, #DC2626);
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
+}
+
+/* Estado Frontal (Vista por defecto) */
+.card-default-content {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    height: 100%;
+}
+
+.roster-card.showcase-active .card-default-content {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Capa Showcase de Jugadores (Aparece en Hover) */
+.player-showcase {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 2;
+    background: rgba(10, 10, 12, 0.95);
+}
+
+.roster-card.showcase-active .player-showcase {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Fotografía del Jugador */
+.player-photo-wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid var(--red-kurenai, #DC2626);
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
+    overflow: hidden;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.player-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.player-photo.active {
+    opacity: 1;
+}
+
+/* Información Tipográfica del Jugador */
+.player-info {
+    text-align: center;
+}
+
+.player-name {
+    font-family: var(--font-heading, sans-serif);
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--white-neon, #FFFFFF);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.player-role-badge {
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--red-kurenai, #DC2626);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Elementos frontales de la tarjeta */
+.game-tag {
+    font-size: 0.8rem;
+    font-family: var(--font-heading, sans-serif);
+    color: var(--red-kurenai, #DC2626);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.roster-title {
+    font-size: 1.5rem;
+    color: var(--white-neon, #FFFFFF);
+    margin: 10px 0 15px 0;
+    font-family: var(--font-heading, sans-serif);
+}
+
+.team-list {
+    margin-top: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.team-list li {
+    padding: 10px 0;
+    font-size: 0.95rem;
+    color: var(--white-dim, #D1D5DB);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-list li:last-child {
+    border-bottom: none;
+}
+
+.player-role {
+    font-size: 0.75rem;
+    color: var(--red-kurenai, #DC2626);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. CARRUSEL INFINITO DE SPONSORS
+   ========================================================================== */
+
+.sponsors-section {
+    padding: 60px 0;
+    background: #070709;
+    overflow: hidden;
+}
+
+.sponsors-title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--white-dim);
+}
+
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 50px;
+    animation: marquee 20s linear infinite;
+}
+
+.sponsor-logo {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 10px 20px;
+    border: 1px dashed rgba(220, 38, 38, 0.3);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   4. ANIMACIÓN #8: REVELADO Y HUD NEÓN GLOW
+   ========================================================================== */
+
+.anim-8 {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease;
+    will-change: opacity, transform;
+}
+
+.anim-8.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 25px var(--red-glow);
+}
+
+.anim-8.active:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 35px var(--red-kurenai);
+    border-color: var(--white-neon);
+}
