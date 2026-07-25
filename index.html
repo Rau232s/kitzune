@@ -3,197 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitzune Division | Tier 3 Esports & Tech Organization</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Kitzune Division | Tier 3 Esports Team</title>
+    <link rel="stylesheet" href="css/main.css">
 
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/landing.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+    
 </head>
 <body>
 
     <div id="preloader">
-        <video autoplay loop muted playsinline class="preloader-video">
-            <source src="assets/logo.mp4" type="video/mp4">
-            Tu navegador no soporta reproducción de video.
+    <div class="preloader-content">
+        <video 
+            id="preloader-video" 
+            src="assets/logo.mp4" 
+            autoplay 
+            muted 
+            playsinline 
+            preload="auto" 
+            decoding="sync">
         </video>
     </div>
+</div>
 
     <header class="navbar">
-        <div class="nav-logo">
-            <img src="assets/logo.png" alt="Kitzune Division Logo" class="brand-logo">
+    <div class="nav-container">
+        <a href="#" class="brand-logo">
+            <img src="assets/logo.png" alt="Kitzune Division Logo" class="logo-img">
             <span class="brand-name">KITZUNE <span class="highlight">DIVISION</span></span>
-        </div>
+        </a>
         <nav class="nav-links">
             <a href="#hero">Inicio</a>
-            <a href="#metrics">Métricas HI/GI</a>
+            <a href="#social">Social</a>
             <a href="#rosters">Divisiones</a>
+            <a href="#staff">Staff</a>
             <a href="#sponsors">Sponsors</a>
-            <a href="#contact" class="btn-nav">Contacto B2B</a>
+            <a href="#contact" class="btn-primary">Contacto B2B</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-card glass-panel anim-8">
-                <div class="hero-badge">ORGANIZACIÓN DE ESPORTS TIER 3</div>
-                <h1 class="hero-title">E-SPORTS IMPULSADOS POR <span class="neon-text-red">DATOS</span> Y <span class="text-white">RENDIMIENTO</span></h1>
-                <p class="hero-description">
-                    Fusionamos la pasión competitiva con un modelo de análisis organizacional que impulsa el crecimiento continuo y el bienestar de nuestras escuadras.
-                </p>
-                <div class="hero-actions">
-                    <a href="#rosters" class="btn btn-primary">Ver Rosters Activos</a>
-                    <a href="#contact" class="btn btn-secondary">Unirse como Sponsor</a>
-                </div>
+    <section id="hero" class="hero-section">
+        <div class="video-overlay"></div>
+        <video autoplay loop muted playsinline id="hero-video">
+            <source src="assets/logo.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content anim-reveal">
+            <h1 class="hero-title">KITZUNE <span class="neon-text">DIVISION</span></h1>
+            <p class="hero-subtitle">Impulsamos escuadras de alto rendimiento en múltiples disciplinas, construyendo una comunidad sólida dentro del ecosistema competitivo</p>
+            <div class="hero-actions">
+                <a href="#rosters" class="btn-primary">Explorar Rosters</a>
+                <a href="#contact" class="btn-outline">Unirse / Patrocinar</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="metrics" class="metrics-section">
-            <div class="section-header anim-8">
-                <h2 class="section-title">HUD DASHBOARD // <span class="neon-text-red">MÉTRICAS Y SALUD</span></h2>
-                <p class="section-subtitle">Modelo analítico de rendimiento organizacional de Nino Raúl Suárez Loras</p>
-            </div>
+    <section id="social" class="social-hub-section">
+  <div class="social-hub-header">
+    <h2 class="social-hub-title">SOCIAL HUB // <span class="glow-text">KZ DIVISION</span></h2>
+    <p class="social-hub-subtitle">Sigue la transmisión, eventos y productos oficiales en vivo</p>
+  </div>
 
-            <div class="metrics-grid">
-                <div class="metric-card glass-panel anim-8">
-                    <div class="metric-header">
-                        <span class="metric-tag">HI INDEX</span>
-                        <span class="metric-status text-white">ÓPTIMO</span>
-                    </div>
-                    <div class="metric-value neon-text-red">0.67</div>
-                    <h3>Índice de Salud (Health Index)</h3>
-                    <p>Evaluación continua de motivación, bienestar, cohesión interna y salud mental de los competidores.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 67%;"></div>
-                    </div>
-                </div>
+  <div class="social-cards-grid">
+    
+    <div class="social-card x-card">
+      <div class="card-bg-image" style="background-image: url('assets/feed_x.jpg');"></div>
+      <div class="card-overlay"></div>
 
-                <div class="metric-card glass-panel anim-8">
-                    <div class="metric-header">
-                        <span class="metric-tag">GI INDEX</span>
-                        <span class="metric-status text-white">EN CRECIMIENTO</span>
-                    </div>
-                    <div class="metric-value neon-text-red">0.73</div>
-                    <h3>Índice de Crecimiento (Growth Index)</h3>
-                    <p>Medición del rendimiento deportivo, expansión de la marca KZD y estabilidad de patrocinio.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 73%;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="social-card-header">
+        <div class="platform-info">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          <span class="platform-name">X // ANUNCIOS</span>
+        </div>
+        <span class="status-badge live-badge">ÚLTIMO POST</span>
+      </div>
 
-        <section id="rosters" class="rosters-section">
-    <div class="section-header anim-8">
+      <div class="social-card-body align-content-body">
+        <div class="card-info-top">
+          <div class="avatar-glow">
+            <img src="assets/logo.png" alt="KZ Division" class="social-avatar">
+          </div>
+          <h3 class="preview-handle">@KZDivision</h3>
+          <p class="preview-desc">
+            "¡Atención Divisiones! Próximo torneo oficial anunciado. Revisa nuestras alineaciones y apoya al equipo. #KZD #Esports"
+          </p>
+        </div>
+        <a href="https://x.com/KZDivision" target="_blank" rel="noopener noreferrer" class="social-btn x-btn">
+          SEGUIR EN X
+        </a>
+      </div>
+    </div>
+
+    <div class="social-card instagram-card">
+      <div class="card-bg-image" style="background-image: url('assets/feed_ig.jpg');"></div>
+      <div class="card-overlay"></div>
+
+      <div class="social-card-header">
+        <div class="platform-info">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span class="platform-name">INSTAGRAM</span>
+        </div>
+        <span class="status-badge">@kz_division</span>
+      </div>
+
+      <div class="social-card-body align-content-body">
+        <div class="card-info-top">
+          <div class="avatar-glow">
+            <img src="assets/logo.png" alt="KZ Division" class="social-avatar">
+          </div>
+          <h3 class="preview-handle">@kz_division</h3>
+          <p class="preview-desc">Artes oficiales, detrás de cámaras, anuncios de rosters y momentos destacados.</p>
+        </div>
+        <a href="https://www.instagram.com/kz_division/" target="_blank" rel="noopener noreferrer" class="social-btn instagram-btn">
+          VER PERFIL EN INSTAGRAM
+        </a>
+      </div>
+    </div>
+
+    <div class="social-card razer-card">
+      <div class="card-bg-image" style="background-image: url('assets/feed_razer.jpg');"></div>
+      <div class="card-overlay"></div>
+
+      <div class="social-card-header">
+        <div class="platform-info">
+          <span class="sponsor-tag">OFFICIAL PARTNER</span>
+        </div>
+        <span class="status-badge razer-badge">RAZER</span>
+      </div>
+
+      <div class="social-card-body align-content-body">
+        <div class="card-info-top">
+          <div class="razer-logo-box">
+            <span class="razer-text">RAZER KITZUNE</span>
+          </div>
+          <h3 class="preview-handle">EQUIPAMIENTO PRO</h3>
+          <p class="preview-desc">Consigue el control óptico de alta precisión oficial utilizado por nuestros competidores.</p>
+        </div>
+        <a href="https://www.razer.com/store/why-shop-with-razer?utm_source=KZDIVISION&utm_medium=affiliate&utm_campaign=260615__RMK_RZCOM_ALL_WW_026Q1&utm_content=6402767&cid=KZDIVISION-affiliate&irclickid=zHkxBFUFZxyZUR8UPXz1-zcvUkuXvQ3FMxeEwE0&irgwc=1&afsrc=1&utm_term=KZDIVISION&utm_sharedid=" target="_blank" rel="noopener noreferrer" class="social-btn razer-btn">
+          COMPRAR EN RAZER STORE
+        </a>
+      </div>
+    </div>
+
+    <div class="social-card stream-card">
+      <div class="card-bg-image" style="background-image: url('assets/feed_stream.jpg');"></div>
+      <div class="card-overlay"></div>
+
+      <div class="social-card-header">
+        <div class="platform-info">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.571 4.714h1.715v5.143H11.571zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+          </svg>
+          <span class="platform-name">STREAM & SHORTS</span>
+        </div>
+        <span class="status-badge live-badge">ONLINE</span>
+      </div>
+
+      <div class="social-card-body content-center">
+        <div class="stream-preview">
+          <div class="multi-stream-links">
+            <a href="https://www.twitch.tv/kzdivision/" target="_blank" rel="noopener noreferrer" class="stream-channel twitch-box">
+              <svg class="platform-btn-icon twitch-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.571 4.714h1.715v5.143H11.571zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+              </svg>
+              <div class="channel-text-group">
+                <span class="channel-title">TWITCH OFFICIAL</span>
+                <span class="channel-sub">twitch.tv/kzdivision</span>
+              </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@kitzune.division/" target="_blank" rel="noopener noreferrer" class="stream-channel tiktok-box">
+              <svg class="platform-btn-icon tiktok-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.28-2.26.54-4.5 2.13-6.13 1.56-1.65 3.82-2.52 6.09-2.38.01 1.41-.01 2.82.01 4.24-.98-.06-1.98.22-2.75.82-.91.68-1.44 1.78-1.39 2.92.01 1.05.51 2.06 1.34 2.69.93.73 2.18.96 3.3.62 1.1-.31 2.01-1.15 2.37-2.22.25-.71.31-1.48.31-2.23V.02z"/>
+              </svg>
+              <div class="channel-text-group">
+                <span class="channel-title">TIKTOK HIGHLIGHTS</span>
+                <span class="channel-sub">@kitzune.division</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <section id="rosters" class="rosters-section">
+    <div class="section-header">
         <h2 class="section-title">DIVISIONES <span class="highlight">COMPETITIVAS</span></h2>
         <p class="section-subtitle">Nuestros equipos oficiales en la escena de Esports</p>
     </div>
 
-    <div id="roster-track" class="horizontal-scroll-track">
-        
-        <div class="roster-card" data-roster="VG">
-            <div class="card-default-content">
-                <span class="game-tag">VALORANT</span>
-                <h3 class="roster-title">KZD GOLD</h3>
-                <ul class="team-list">
-                    <li>Player 1 <span class="player-role">Duelista</span></li>
-                    <li>Player 2 <span class="player-role">Iniciador</span></li>
-                    <li>Player 3 <span class="player-role">Centinela</span></li>
-                    <li>Player 4 <span class="player-role">Controlador</span></li>
-                    <li>Player 5 <span class="player-role">IGL</span></li>
-                </ul>
-            </div>
-            
-            <div class="player-showcase">
-                <div class="player-photo-wrapper">
-                    <img src="assets/VG1.jpg" alt="Jugador KZD" class="player-photo active">
-                </div>
-                <div class="player-info">
-                    <h4 class="player-name">PLAYER 1</h4>
-                    <span class="player-role-badge">DUELISTA</span>
-                </div>
-            </div>
+    <div class="rosters-container">
         </div>
-
-        <div class="roster-card" data-roster="VM">
-            <div class="card-default-content">
-                <span class="game-tag">VALORANT GC</span>
-                <h3 class="roster-title">KZD MOONVEIL</h3>
-                <ul class="team-list">
-                    <li>Player 1 <span class="player-role">Duelista</span></li>
-                    <li>Player 2 <span class="player-role">Iniciador</span></li>
-                    <li>Player 3 <span class="player-role">Centinela</span></li>
-                    <li>Player 4 <span class="player-role">Controlador</span></li>
-                    <li>Player 5 <span class="player-role">IGL</span></li>
-                </ul>
-            </div>
-
-            <div class="player-showcase">
-                <div class="player-photo-wrapper">
-                    <img src="assets/VM1.jpg" alt="Jugadora KZD" class="player-photo active">
-                </div>
-                <div class="player-info">
-                    <h4 class="player-name">PLAYER 1</h4>
-                    <span class="player-role-badge">DUELISTA</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="roster-card" data-roster="LE">
-            <div class="card-default-content">
-                <span class="game-tag">LEAGUE OF LEGENDS</span>
-                <h3 class="roster-title">KZD EGO</h3>
-                <ul class="team-list">
-                    <li>Player 1 <span class="player-role">Top</span></li>
-                    <li>Player 2 <span class="player-role">Jungle</span></li>
-                    <li>Player 3 <span class="player-role">Mid</span></li>
-                    <li>Player 4 <span class="player-role">ADC</span></li>
-                    <li>Player 5 <span class="player-role">Support</span></li>
-                </ul>
-            </div>
-
-            <div class="player-showcase">
-                <div class="player-photo-wrapper">
-                    <img src="assets/LE1.jpg" alt="Jugador KZD" class="player-photo active">
-                </div>
-                <div class="player-info">
-                    <h4 class="player-name">PLAYER 1</h4>
-                    <span class="player-role-badge">TOP</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="roster-card" data-roster="LF">
-            <div class="card-default-content">
-                <span class="game-tag">LOL FEMENIL</span>
-                <h3 class="roster-title">KZD MOONVEIL</h3>
-                <ul class="team-list">
-                    <li>Player 1 <span class="player-role">Top</span></li>
-                    <li>Player 2 <span class="player-role">Jungle</span></li>
-                    <li>Player 3 <span class="player-role">Mid</span></li>
-                    <li>Player 4 <span class="player-role">ADC</span></li>
-                    <li>Player 5 <span class="player-role">Support</span></li>
-                </ul>
-            </div>
-
-            <div class="player-showcase">
-                <div class="player-photo-wrapper">
-                    <img src="assets/LF1.jpg" alt="Jugadora KZD" class="player-photo active">
-                </div>
-                <div class="player-info">
-                    <h4 class="player-name">PLAYER 1</h4>
-                    <span class="player-role-badge">TOP</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </section>
 
-        <section id="sponsors" class="sponsors-section anim-8">
+    <div id="roster-track" class="horizontal-scroll-track">
+        
+    <div class="roster-card" data-roster="VG">
+        <div class="card-default-content">
+            <span class="game-tag">COUNTER STRIKE 2</span>
+            <h3 class="roster-title">KZD SERAFIN</h3>
+            <ul class="team-list">
+                <li data-name="ATHER" data-role="IGL" data-photo="assets/CS1.jpg">
+                    ATHER <span class="player-role">IGL</span>
+                </li>
+                <li data-name="PAPITA" data-role="Iniciador" data-photo="assets/CS2.jpg">
+                    PAPITA <span class="player-role">Iniciador</span>
+                </li>
+                <li data-name="AMEND" data-role="Centinela" data-photo="assets/CS3.jpeg">
+                    AMEND <span class="player-role">Centinela</span>
+                </li>
+                <li data-name="DANI" data-role="Controlador" data-photo="assets/CS4.jpg">
+                    DANI <span class="player-role">Controlador</span>
+                </li>
+                <li data-name="CABRI" data-role="Duelista" data-photo="assets/CS5.jpg">
+                    CABRI <span class="player-role">Duelista</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="player-showcase">
+            <div class="player-photo-wrapper">
+                <img src="assets/VG1.jpg" alt="Jugador KZD" class="player-photo active">
+            </div>
+            <div class="player-info">
+                <h4 class="player-name">ATHER</h4>
+                <span class="player-role-badge">IGL</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="roster-card" data-roster="VM">
+        <div class="card-default-content">
+            <span class="game-tag">VALORANT GC</span>
+            <h3 class="roster-title">KZD MOONVEIL</h3>
+            <ul class="team-list">
+                <li data-name="Player 1" data-role="Duelista" data-photo="assets/VM1.jpg">
+                    Player 1 <span class="player-role">Duelista</span>
+                </li>
+                <li data-name="Player 2" data-role="Iniciador" data-photo="assets/VM2.jpg">
+                    Player 2 <span class="player-role">Iniciador</span>
+                </li>
+                <li data-name="Player 3" data-role="Centinela" data-photo="assets/VM3.jpg">
+                    Player 3 <span class="player-role">Centinela</span>
+                </li>
+                <li data-name="Player 4" data-role="Controlador" data-photo="assets/VM4.jpg">
+                    Player 4 <span class="player-role">Controlador</span>
+                </li>
+                <li data-name="Player 5" data-role="IGL" data-photo="assets/VM5.jpg">
+                    Player 5 <span class="player-role">IGL</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="player-showcase">
+            <div class="player-photo-wrapper">
+                <img src="assets/VM1.jpg" alt="Jugadora KZD" class="player-photo active">
+            </div>
+            <div class="player-info">
+                <h4 class="player-name">Player 1</h4>
+                <span class="player-role-badge">DUELISTA</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="roster-card" data-roster="LE">
+        <div class="card-default-content">
+            <span class="game-tag">LEAGUE OF LEGENDS</span>
+            <h3 class="roster-title">KZD EGO</h3>
+            <ul class="team-list">
+                <li data-name="Player 1" data-role="Top" data-photo="assets/LE1.jpg">
+                    Player 1 <span class="player-role">Top</span>
+                </li>
+                <li data-name="Player 2" data-role="Jungle" data-photo="assets/LE2.jpg">
+                    Player 2 <span class="player-role">Jungle</span>
+                </li>
+                <li data-name="Player 3" data-role="Mid" data-photo="assets/LE3.jpg">
+                    Player 3 <span class="player-role">Mid</span>
+                </li>
+                <li data-name="Player 4" data-role="ADC" data-photo="assets/LE4.jpg">
+                    Player 4 <span class="player-role">ADC</span>
+                </li>
+                <li data-name="Player 5" data-role="Support" data-photo="assets/LE5.jpg">
+                    Player 5 <span class="player-role">Support</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="player-showcase">
+            <div class="player-photo-wrapper">
+                <img src="assets/LE1.jpg" alt="Jugador KZD" class="player-photo active">
+            </div>
+            <div class="player-info">
+                <h4 class="player-name">Player 1</h4>
+                <span class="player-role-badge">TOP</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="roster-card" data-roster="LF">
+        <div class="card-default-content">
+            <span class="game-tag">LOL FEMENIL</span>
+            <h3 class="roster-title">KZD MOONVEIL</h3>
+            <ul class="team-list">
+                <li data-name="Monche" data-role="Top" data-photo="assets/LF1.jpg">
+                    Monche <span class="player-role">Top</span>
+                </li>
+                <li data-name="FEX" data-role="Jungle" data-photo="assets/LF2.jpg">
+                    FEX <span class="player-role">Jungle</span>
+                </li>
+                <li data-name="Player 3" data-role="Mid" data-photo="assets/LF3.jpg">
+                    Player 3 <span class="player-role">Mid</span>
+                </li>
+                <li data-name="Player 4" data-role="ADC" data-photo="assets/LF4.jpg">
+                    Player 4 <span class="player-role">ADC</span>
+                </li>
+                <li data-name="Player 5" data-role="Support" data-photo="assets/LF5.jpg">
+                    Player 5 <span class="player-role">Support</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="player-showcase">
+            <div class="player-photo-wrapper">
+                <img src="assets/LF1.jpg" alt="Jugadora KZD" class="player-photo active">
+            </div>
+            <div class="player-info">
+                <h4 class="player-name">Player 1</h4>
+                <span class="player-role-badge">TOP</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+</section>
+
+     <section id="sponsors" class="sponsors-section anim-8">
             <h3 class="sponsors-title">MARCAS Y ALIANZAS ESTRATÉGICAS</h3>
             <div class="marquee-wrapper">
                 <div class="marquee-track">
@@ -210,28 +364,40 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer id="contact" class="footer-section">
-        <div class="footer-content glass-panel anim-8">
-            <div class="footer-brand">
-                <img src="assets/logo.png" alt="Logo KZD" class="footer-logo">
-                <h2>KITZUNE DIVISION</h2>
-                <p>Nivel Empresarial Tier 3 Esports | Data-Driven Organization</p>
-            </div>
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/kz_division/" target="_blank" rel="noopener noreferrer" class="social-link">
-                    Instagram: @kz_division
-                </a>
+    <footer id="contact" class="footer anim-8">
+    <div class="footer-container glass-panel">
+        <div class="footer-brand">
+            <img src="assets/logo.png" alt="Logo KZD" class="footer-logo">
+            <h2>KITZUNE DIVISION</h2>
+            <p class="footer-tagline">Nivel Empresarial Tier 3 Esports | Data-Driven Organization</p>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contacto</h3>
+            <p><strong>Email:</strong> <a href="mailto:contacto@kzdivision.com">contacto@kzdivision.com</a></p>
+            <p><strong>Comunidad:</strong> <a href="https://discord.gg/R5PfQ3nq3H" target="_blank" rel="noopener noreferrer" class="discord-btn">Unirse al Discord</a></p>
+        </div>
+
+        <div class="footer-socials">
+            <h3>Redes Sociales</h3>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/kz_division/" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+                <a href="https://x.com/kz_division" target="_blank" rel="noopener noreferrer" class="footer-link">X / Twitter</a>
+                <a href="https://www.tiktok.com/@kz_division" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok</a>
+                <a href="https://www.twitch.tv/kz_division" target="_blank" rel="noopener noreferrer" class="footer-link">Twitch</a>
+                <a href="https://discord.gg/R5PfQ3nq3H" target="_blank" rel="noopener noreferrer" class="footer-link">Discord</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Kitzune Division. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    </div>
 
-    <script src="js/preloader.js"></script>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Kitzune Division. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
     <script src="js/anim-8.js"></script>
     <script src="js/horizontal-scroll.js"></script>
+    <script src="js/preloader.js"></script>
 </body>
 </html>

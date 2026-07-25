@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KITZUNE DIVISION - CARRUSEL INFINITO Y SHOWCASE INTERACTIVO DE JUGADORES
+   KITZUNE DIVISION - SHOWCASE INTERACTIVO CON TRANSICIÓN SUAVE
    Archivo: js/horizontal-scroll.js
    ========================================================================== */
 
@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('roster-track');
     if (!track) return;
 
-    // 1. Configuración del Autoscroll
+    // 1. Configuración del Autoscroll Infinito
     const speed = 1;
     let isPaused = false;
 
-    track.innerHTML += track.innerHTML; // Duplicado para bucle continuo
+    track.innerHTML += track.innerHTML; // Duplicado dinámico
 
     function autoScroll() {
         if (!isPaused) {
@@ -24,39 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     autoScroll();
 
-    // 2. Datos de Jugadores por Nomenclatura (3 Caracteres)
-    const rosterData = {
-        'VG': [
-            { img: 'VG1.jpg', name: 'PLAYER 1', role: 'DUELISTA' },
-            { img: 'VG2.jpg', name: 'PLAYER 2', role: 'INICIADOR' },
-            { img: 'VG3.jpg', name: 'PLAYER 3', role: 'CENTINELA' },
-            { img: 'VG4.jpg', name: 'PLAYER 4', role: 'CONTROLADOR' },
-            { img: 'VG5.jpg', name: 'PLAYER 5', role: 'IGL' }
-        ],
-        'VM': [
-            { img: 'VM1.jpg', name: 'PLAYER 1', role: 'DUELISTA' },
-            { img: 'VM2.jpg', name: 'PLAYER 2', role: 'INICIADOR' },
-            { img: 'VM3.jpg', name: 'PLAYER 3', role: 'CENTINELA' },
-            { img: 'VM4.jpg', name: 'PLAYER 4', role: 'CONTROLADOR' },
-            { img: 'VM5.jpg', name: 'PLAYER 5', role: 'IGL' }
-        ],
-        'LE': [
-            { img: 'LE1.jpg', name: 'PLAYER 1', role: 'TOP' },
-            { img: 'LE2.jpg', name: 'PLAYER 2', role: 'JUNGLE' },
-            { img: 'LE3.jpg', name: 'PLAYER 3', role: 'MID' },
-            { img: 'LE4.jpg', name: 'PLAYER 4', role: 'ADC' },
-            { img: 'LE5.jpg', name: 'PLAYER 5', role: 'SUPPORT' }
-        ],
-        'LF': [
-            { img: 'LF1.jpg', name: 'PLAYER 1', role: 'TOP' },
-            { img: 'LF2.jpg', name: 'PLAYER 2', role: 'JUNGLE' },
-            { img: 'LF3.jpg', name: 'PLAYER 3', role: 'MID' },
-            { img: 'LF4.jpg', name: 'PLAYER 4', role: 'ADC' },
-            { img: 'LF5.jpg', name: 'PLAYER 5', role: 'SUPPORT' }
-        ]
-    };
-
-    // 3. Manejo de Hover y Rotación
+    // 2. Manejo de Tarjetas y Transición Suave
     const cards = track.querySelectorAll('.roster-card');
 
     cards.forEach(card => {
@@ -64,38 +32,62 @@ document.addEventListener('DOMContentLoaded', () => {
         let rotateInterval = null;
         let currentIndex = 0;
 
-        const code = card.getAttribute('data-roster');
-        const players = rosterData[code];
+        const playerItems = card.querySelectorAll('.team-list li');
+        if (playerItems.length === 0) return;
 
-        if (!players) return;
+        // Construcción dinámica de datos desde data-*
+        const players = Array.from(playerItems).map(item => ({
+            name: item.dataset.name || item.childNodes[0].textContent.trim(),
+            role: item.dataset.role || item.querySelector('.player-role')?.textContent || '',
+            photo: item.dataset.photo || 'assets/default.jpg'
+        }));
 
+        const showcase = card.querySelector('.player-showcase');
         const showcaseImg = card.querySelector('.player-photo');
         const showcaseName = card.querySelector('.player-name');
         const showcaseRole = card.querySelector('.player-role-badge');
 
+        // Función con transición suave (Fade Out -> Cambiar Datos -> Fade In)
+        function changePlayerWithFade(newIndex) {
+            if (!showcase) return;
+
+            // 1. Inicia el desvanecimiento (Fade Out)
+            showcase.classList.add('is-transitioning');
+
+            // 2. Espera a que termine la opacidad a 0 (300ms) para cambiar datos
+            setTimeout(() => {
+                currentIndex = newIndex;
+                const player = players[currentIndex];
+
+                if (player) {
+                    if (showcaseImg) {
+                        showcaseImg.src = player.photo;
+                        showcaseImg.alt = player.name;
+                    }
+                    if (showcaseName) showcaseName.textContent = player.name;
+                    if (showcaseRole) showcaseRole.textContent = player.role;
+                }
+
+                // 3. Quita la clase para volver a mostrar con animación (Fade In)
+                showcase.classList.remove('is-transitioning');
+            }, 300);
+        }
+
+        // --- HOVER SOBRE LA TARJETA COMPLETA ---
         card.addEventListener('mouseenter', () => {
             isPaused = true;
 
-            // Activa el showcase tras un pequeño retraso de intencionalidad
             hoverTimer = setTimeout(() => {
                 card.classList.add('showcase-active');
-                currentIndex = 0;
-                updatePlayerInfo();
+                changePlayerWithFade(0);
 
-                // Inicia la rotación continua cada 2.5 segundos
+                // Rotación automática cada 3 segundos
                 rotateInterval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % players.length;
-                    
-                    // Efecto de desvanecimiento
-                    showcaseImg.classList.remove('active');
-                    setTimeout(() => {
-                        updatePlayerInfo();
-                        showcaseImg.classList.add('active');
-                    }, 250);
+                    const nextIndex = (currentIndex + 1) % players.length;
+                    changePlayerWithFade(nextIndex);
+                }, 3000);
 
-                }, 2500);
-
-            }, 350);
+            }, 250);
         });
 
         card.addEventListener('mouseleave', () => {
@@ -103,13 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
             clearTimeout(hoverTimer);
             clearInterval(rotateInterval);
             card.classList.remove('showcase-active');
+            if (showcase) showcase.classList.remove('is-transitioning');
         });
 
-        function updatePlayerInfo() {
-            const player = players[currentIndex];
-            showcaseImg.src = `assets/${player.img}`;
-            showcaseName.textContent = player.name;
-            showcaseRole.textContent = player.role;
-        }
+        // --- HOVER INDIVIDUAL EN CADA JUGADOR DE LA LISTA ---
+        playerItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', (e) => {
+                e.stopPropagation();
+                if (currentIndex !== index) {
+                    changePlayerWithFade(index);
+                }
+            });
+        });
     });
 });

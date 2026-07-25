@@ -1,116 +1,100 @@
-/* ==========================================================================
-   KITZUNE DIVISION - MAIN CSS
-   Regla 60-30-10: 
-   60% Fondo Negro Dark (#0A0A0C)
-   30% Rojo Carmesí / Kurenai (#DC2626)
-   10% Blanco Neón (#FFFFFF)
-   ========================================================================== */
-
+/* Variables Globales & Reset */
 :root {
-    /* Paleta Estricta 60-30-10 */
-    --bg-dark: #0A0A0C;           /* 60% Dominante */
-    --bg-card: #121216;
-    --red-kurenai: #DC2626;       /* 30% Secundario / Estructura */
-    --red-glow: rgba(220, 38, 38, 0.4);
-    --white-neon: #FFFFFF;        /* 10% Acento y Texto de Alta Lectura */
-    --white-dim: #D1D5DB;
-    
-    /* Tipografías */
-    --font-heading: 'Orbitron', sans-serif;
-    --font-body: 'Rajdhani', sans-serif;
-    
-    /* Transiciones */
-    --transition-fast: 0.3s ease;
-    --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --bg-dark: #090A0F;
+    --bg-card: #12131C;
+    --primary-glow: #8B5CF6;
+    --secondary-glow: #EC4899;
+    --hud-green: #10B981;
+    --text-main: #FFFFFF;
+    --text-muted: #A0A0AB;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --footer-bg: rgba(18, 19, 28, 0.85);   /* Fondo oscuro transparente */
+    --footer-border: rgba(139, 92, 246, 0.3); /* Borde morado neón */
+    --footer-glow: rgba(236, 72, 153, 0.4);   /* Resplandor rosa/magenta */
 }
 
-/* Reset y Base */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-dark);
-    color: var(--white-dim);
-    font-family: var(--font-body);
-    font-size: 18px;
-    line-height: 1.6;
+    color: var(--text-main);
+    font-family: var(--font-family);
     overflow-x: hidden;
-}
-
-h1, h2, h3, h4, .font-heading {
-    font-family: var(--font-heading);
-    color: var(--white-neon);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    line-height: 1.6;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
-    transition: var(--transition-fast);
+    text-decoration: none;
 }
 
-ul {
-    list-style: none;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Estilos de Texto e Identidad */
-.neon-text-red {
-    color: var(--red-kurenai);
-    text-shadow: 0 0 10px var(--red-glow);
+/* Tipografía Neón */
+.neon-text {
+    color: var(--primary-glow);
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
 }
 
-.text-white {
-    color: var(--white-neon);
+.neon-text-green {
+    color: var(--hud-green);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
 }
 
-/* Paneles de Cristal (Glassmorphism Dark) */
-.glass-panel {
-    background: rgba(18, 18, 22, 0.85);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(220, 38, 38, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-}
-
-/* Botones con Acento Blanco (10%) y Bordes Rojos (30%) */
-.btn {
-    display: inline-block;
-    padding: 12px 28px;
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition-fast);
-}
-
+/* Botones */
 .btn-primary {
-    background-color: var(--white-neon);
-    color: var(--bg-dark);
-    border: 2px solid var(--white-neon);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: var(--red-kurenai);
-    color: var(--white-neon);
-    border-color: var(--red-kurenai);
-    box-shadow: 0 0 20px var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
 }
 
-.btn-secondary {
-    background: transparent;
-    color: var(--white-neon);
-    border: 2px solid var(--red-kurenai);
+.btn-outline {
+    border: 1px solid var(--primary-glow);
+    color: var(--text-main);
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s ease;
 }
 
-.btn-secondary:hover {
-    background: var(--red-kurenai);
-    box-shadow: 0 0 15px var(--red-glow);
+.btn-outline:hover {
+    background: rgba(139, 92, 246, 0.15);
+}
+/* ==========================================
+   ESTILOS RESPONSIVOS GLOBALES
+   ========================================== */
+
+/* Tablets / Pantallas Medianas (1024px o menos) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* Teléfonos Móviles (768px o menos) */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Reduce proporcionalmente la escala base */
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
 }
