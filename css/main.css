@@ -10,7 +10,7 @@
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
     --footer-bg: rgba(18, 19, 28, 0.85);   /* Fondo oscuro transparente */
     --footer-border: rgba(139, 92, 246, 0.3); /* Borde morado neón */
-    --footer-glow: rgba(236, 72, 153, 0.4);   /* Resplandor rosa/magenta */
+    --footer-glow: rgba(148, 72, 236, 0.4);   /* Resplandor rosa/magenta */
 }
 
 

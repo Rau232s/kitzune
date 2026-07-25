@@ -120,23 +120,192 @@
     justify-content: center;
 }
 
-/* Footer */
+/* ==========================================
+   FOOTER COMPACTO (2 COLUMNAS) - KITZUNE DIVISION
+   ========================================== */
 .footer {
-    padding: 40px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 0 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     background: var(--bg-card);
+    position: relative;
+    z-index: 10;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
+}
+
+/* Columna Izquierda */
+.footer-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-brand-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .footer-logo {
-    height: 30px;
-    margin-bottom: 8px;
+    height: 32px;
+    width: auto;
+}
+
+.footer-brand-inline h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white-pure);
+    letter-spacing: 0.8px;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.footer-tagline {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 2px 0 0 0;
+}
+
+/* Info e email inline */
+.footer-info-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+}
+
+.footer-email {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-email:hover {
+    color: var(--red-kurenai);
+}
+
+.dot-separator {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.discord-btn-compact {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    background: rgba(88, 101, 242, 0.12);
+    border: 1px solid #5865F2;
+    color: #5865F2;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.discord-btn-compact:hover {
+    background: #5865F2;
+    color: #FFF;
+    box-shadow: 0 0 10px rgba(88, 101, 242, 0.4);
+}
+
+/* Columna Derecha - Íconos de Redes */
+.footer-col-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: left;
+    gap: 6px;
+}
+
+.socials-title {
+    font-size: 0.7rem;
+    text-align: left; /* Garantiza alineación a la izquierda */
+    display: block;
+    color: var(--red-kurenai);
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+}
+
+.footer-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.icon-svg {
+    width: 16px;
+    height: 16px;
+}
+
+.social-icon-btn:hover {
+    color: var(--white-pure);
+    border-color: var(--red-kurenai);
+    background: rgba(236, 72, 153, 0.15);
+    box-shadow: 0 0 10px var(--red-glow);
+    transform: translateY(-2px);
+}
+
+/* Copyright Slim */
+.footer-bottom-slim {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+    padding-top: 8px;
+    margin-top: 10px;
+}
+
+.footer-bottom-slim p {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Adaptación Móvil */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-col-right {
+        align-items: center;
+    }
+
+    .footer-brand-inline {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .footer-info-inline {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .dot-separator {
+        display: none;
+    }
 }

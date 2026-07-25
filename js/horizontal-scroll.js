@@ -109,3 +109,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los enlaces del menú que apunten a una sección interna (#id)
+    const navLinks = document.querySelectorAll('nav a[href^="#"], .nav-menu a[href^="#"]');
+    
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            
+            // Verificar que no sea solo "#" o un enlace vacío
+            if (targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    e.preventDefault(); // Previene el salto instantáneo predeterminado
+                    
+                    // Calcular la posición exacta restando la altura del menú
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset;
+
+                    // Realizar el desplazamiento suave
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+});

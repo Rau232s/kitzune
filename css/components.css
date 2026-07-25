@@ -35,6 +35,7 @@
     overflow: hidden;
 }
 
+  /* Al tener más padding interno, necesita una compensación menor */
 /* Solo el encabezado de la sección */
 .section-header {
     display: flex;
@@ -43,7 +44,8 @@
     justify-content: center;
     text-align: center;
     width: 100%;
-    margin-bottom: 40px; /* O el espacio deseado antes de las tarjetas */
+    margin-bottom: 10px;
+    /* O el espacio deseado antes de las tarjetas */
 }
 
 /* Subtítulo alineado */
@@ -242,6 +244,9 @@
     padding: 60px 0;
     background: #070709;
     overflow: hidden;
+    border-top: 1px solid #9d48ec;    /* Color deseado para el borde superior */
+    border-bottom: 1px solid #9d48ec;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
 }
 
 .sponsors-title {
@@ -421,7 +426,32 @@
     padding: 24px;
     text-align: center;
 }
+/* Contenedor adaptativo para el Widget de X */
+.x-timeline-container {
+  width: 100%;
+  height: 260px; /* Misma altura que ocupaba el conjunto avatar + texto */
+  overflow-y: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2; /* Asegura interacción directa para hacer scroll dentro de las publicaciones */
+}
 
+/* Opcional: Personalizar la barra de desplazamiento interna del feed */
+.x-timeline-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.x-timeline-container::-webkit-scrollbar-thumb {
+  background: var(--primary-glow, #8B5CF6);
+  border-radius: 4px;
+}
+
+/* Asegurar que el iframe de Twitter respete las dimensiones del contenedor */
+.x-timeline-container iframe {
+  border-radius: 8px !important;
+  max-width: 100% !important;
+}
 /* Vista Previa de Instagram */
 .social-preview, .razer-preview, .stream-preview {
     display: flex;
@@ -732,13 +762,13 @@
 
 /* 1. Asegurar visibilidad y tamaño del contenedor padre */
 .rosters-section {
-    padding: 5px 5%;
+    padding: 65px 5%;
     position: relative;
     width: 100%;
     display: block;        /* Mantiene el flujo de bloque normal */
     overflow: hidden;
     opacity: 1 !important;  /* Forzar visibilidad */
-    scroll-margin-top: 65px;      /* Ajusta esta altura según lo que mida tu menú (ej. 80px a 120px) */
+    scroll-margin-top: 100px;      /* Ajusta esta altura según lo que mida tu menú (ej. 80px a 120px) */
 }
 
 /* 2. Centrado y posición del Encabezado */
@@ -786,3 +816,4 @@
     opacity: 0;
     transform: translateY(8px);
 }
+

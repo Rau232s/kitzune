@@ -1,0 +1,273 @@
+/* ==========================================================================
+   KITZUNE DIVISION - STAFF VIEWPORT (SINGLE SCREEN / 100VH)
+   ========================================================================== */
+
+:root {
+    --bg-dark: #090A0F;
+    --bg-card: #12131C;
+    --primary-glow: #8B5CF6;
+    --secondary-glow: #EC4899;
+    --hud-green: #10B981;
+    --text-main: #FFFFFF;
+    --text-muted: #A0A0AB;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --footer-bg: rgba(18, 19, 28, 0.85);
+    --footer-border: rgba(139, 92, 246, 0.3);
+    --footer-glow: rgba(148, 72, 236, 0.4);
+}
+
+/* Reset de pantalla completa sin scroll */
+html, body.staff-body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Evita el desplazamiento/scroll de la página */
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* --- Navigation Header --- */
+.staff-header {
+    height: 60px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--footer-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header-left .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header-left .back-btn:hover {
+    color: var(--primary-glow);
+    transform: translateX(-3px);
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.staff-logo {
+    height: 32px;
+    width: auto;
+}
+
+.header-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.header-title span {
+    color: var(--primary-glow);
+}
+
+.badge-tier {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--hud-green);
+    color: var(--hud-green);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* --- Viewport Body --- */
+.staff-viewport {
+    height: calc(100vh - 60px);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CEO Banner Horizontal */
+.ceo-banner {
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.15) 0%, rgba(18, 19, 28, 0.9) 100%);
+    border: 1px solid var(--primary-glow);
+    border-left: 4px solid var(--primary-glow);
+    border-radius: 8px;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.ceo-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--secondary-glow);
+    background: rgba(236, 72, 153, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.ceo-name {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--text-main);
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.ceo-sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Grid de Columnas (3 Columnas principales) */
+.organigram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    flex: 1; /* Ocupa el resto del alto disponible */
+    min-height: 0; /* Previene overflow del grid */
+}
+
+/* Estructura de Columna */
+.org-column {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0; /* Permite scroll interno de tarjetas si fuera muy pequeño el monitor */
+}
+
+.col-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    padding-bottom: 8px;
+}
+
+.col-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.col-icon {
+    font-size: 1.1rem;
+}
+
+/* Contenedor de Tarjetas */
+.cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* Scroll contenido únicamente dentro de la columna si la pantalla es reducida */
+    padding-right: 4px;
+}
+
+/* Personalización del Scrollbar Interno */
+.cards-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+
+.cards-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-glow);
+    border-radius: 4px;
+}
+
+/* Tarjeta individual de Staff */
+.staff-card {
+    background: rgba(9, 10, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 10px 12px;
+    transition: all 0.3s ease;
+}
+
+.staff-card:hover {
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+    transform: translateY(-2px);
+}
+
+.staff-card.highlight-card {
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.staff-card.highlight-card:hover {
+    border-color: var(--hud-green);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
+.card-role {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--primary-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.card-lead {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.card-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.25;
+}
+
+.card-support {
+    margin-top: 6px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    border-top: 1px stroke rgba(255, 255, 255, 0.05);
+    padding-top: 4px;
+}
+
+.card-support span {
+    color: var(--secondary-glow);
+    font-weight: 700;
+}
+
+/* Media Queries para Responsividad en Pantallas Pequeñas */
+@media (max-width: 1024px) {
+    html, body.staff-body {
+        overflow-y: auto; /* Permite scroll solo en dispositivos móviles/tablets */
+        height: auto;
+    }
+    .staff-viewport {
+        height: auto;
+    }
+    .organigram-grid {
+        grid-template-columns: 1fr;
+    }
+}
